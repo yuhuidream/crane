@@ -1,0 +1,4 @@
+CFLAGS   += -g
+CXXFLAGS += -g
+CPPFLAGS += -DDEBUG
+LDFLAGS  += -g

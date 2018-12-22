@@ -1,0 +1,190 @@
+#ifndef __MFP_EMEI_H
+#define __MFP_EMEI_H
+
+#include "mfp.h"
+
+/**************************** nezha3 1.0 dkb pinmux 8******************/
+#define MFP_DRIVE_VERY_SLOW	(0x0 << 13)
+#define MFP_DRIVE_SLOW		(0x1 << 13)
+#define MFP_DRIVE_MEDIUM	(0x2 << 13)
+#define MFP_DRIVE_FAST		(0x3 << 13)
+
+//nezha3 newly added
+#define GPS_PPS			MFP_CFG(PA_MODE, AF6)
+#define GPS_TIMER_SYNC		MFP_CFG(ANT_SW4, AF6)
+#define FSCHG_GPIO2		MFP_CFG(VCXOREQ, AF1)
+#define FSCHG_GPIO1		MFP_CFG(CLK_REQ, AF1)
+#define GPS_ON_OFF	        MFP_CFG(DF_RDY1, AF1)
+#define GPS_RESET_N	        MFP_CFG(SM_RDY, AF1)
+
+#define PCM_CLK			MFP_CFG(GPIO25, AF1)
+#define PCM_SYNC		MFP_CFG(GPIO26, AF1)
+#define PCM_TXD			MFP_CFG(GPIO27, AF1)
+#define PCM_RXD			MFP_CFG(GPIO28, AF1)
+
+#define CP_WAKE_AP		MFP_CFG_PULL(GPIO33, AF0,PULL_HIGH)
+#define CP_BOOT_ACK		MFP_CFG_PULL(GPIO34, AF0,PULL_HIGH)
+#define CP_WDT_LCD_RST		MFP_CFG_PULL(GPIO35, AF0,PULL_HIGH)
+#define CP_ASSERT	    	MFP_CFG_PULL(GPIO36, AF0,PULL_HIGH)
+
+#define CHARGER_INT         	MFP_CFG_PULL(GPIO49, AF0,PULL_HIGH)
+#define WLAN_WAKE_HOST      	MFP_CFG_PULL(GPIO50, AF0,PULL_HIGH)
+
+#define CP_UART_RXD		MFP_CFG(GPIO51, AF1)
+#define CP_UART_TXD		MFP_CFG(GPIO52, AF1)
+
+#define CI2C_SCL		MFP_CFG(GPIO53, AF2)
+#define CI2C_SDA		MFP_CFG(GPIO54, AF2)
+
+#define BAT_DET         	MFP_CFG_PULL(GPIO124, AF0,PULL_HIGH)
+
+#define CHG_OTG_EN         	MFP_CFG_PULL_SLEEP(MMC1_DAT5,AF1,PULL_LOW,SLEEP_DRIVE_LOW)
+#define CHG_STAT         	MFP_CFG_PULL(MMC1_DAT6,AF1,PULL_HIGH)
+
+#define SD_DAT3         	MFP_CFG_DRV(MMC1_DAT3,AF0,FAST)
+
+#define SD_DAT2         	MFP_CFG_DRV_PULL(MMC1_DAT2,AF0,FAST,PULL_HIGH)
+#define SD_DAT1         	MFP_CFG_DRV_PULL(MMC1_DAT1,AF0,FAST,PULL_HIGH)
+#define SD_DAT0         	MFP_CFG_DRV_PULL(MMC1_DAT0,AF0,FAST,PULL_HIGH)
+#define SD_CMD          	MFP_CFG_DRV_PULL(MMC1_CMD, AF0,FAST,PULL_HIGH)
+#define SD_CLK          	MFP_CFG_DRV_PULL(MMC1_CLK, AF0,FAST,PULL_HIGH)
+#define SD_CD           	MFP_CFG_PULL(MMC1_CD, AF0, PULL_HIGH)
+#define SD_WP           	MFP_CFG_PULL(MMC1_WP, AF0, PULL_LOW)
+
+//#define CLK_REQ             	MFP_CFG_PULL_SLEEP(CLK_REQ,AF1,PULL_LOW,SLEEP_DRIVE_LOW)
+//#define VCXOREQ             	MFP_CFG_PULL(VCXOREQ,AF1,PULL_LOW)
+
+/* HSL interface*/
+#define DIGRF_EN            	MFP_CFG_PULL_SLEEP(GPIO60, AF0,PULL_LOW,SLEEP_DRIVE_LOW)
+#define HSL_DATA2		    MFP_CFG(GPIO61, AF5)
+#define HSL_DATA1		    MFP_CFG(GPIO62, AF5)
+#define HSL_DATA0		    MFP_CFG(GPIO63, AF5)
+#define HSL_DATA4		    MFP_CFG(GPIO64, AF5)
+#define HSL_DATA3		    MFP_CFG(GPIO65, AF5)
+#define HSL_CLK			    MFP_CFG(GPIO66, AF5)
+
+#define MMC3_CMD                        MFP_CFG_PULL(TDS_CLK, AF4,PULL_LOW)
+#define WLAN_RSTN                       MFP_CFG_PULL(TDS_DIO0, AF1,PULL_LOW)
+#define WLAN_PDN                        MFP_CFG_PULL(TDS_DIO1, AF1,PULL_LOW)
+#define LTEWLAN_COEX_UART_IN            MFP_CFG_PULL(TDS_DIO2, AF5,PULL_NONE)
+#define LTEWLAN_COEX_UART_OUT           MFP_CFG_PULL(TDS_DIO3, AF5,PULL_NONE)
+#define MMC3_DAT3                       MFP_CFG_PULL(TDS_DIO4, AF4,PULL_LOW)
+#define MMC3_DAT2                       MFP_CFG_PULL(TDS_DIO5, AF4,PULL_LOW)
+#define MMC3_DAT1                       MFP_CFG_PULL(TDS_DIO6, AF4,PULL_LOW)
+#define MMC3_DAT0                       MFP_CFG_PULL(TDS_DIO7, AF4,PULL_LOW)
+#define MMC3_CLK                        MFP_CFG_PULL(TDS_DIO8, AF4,PULL_LOW)
+#define SEC_DIGRF_EN                    MFP_CFG_PULL_SLEEP(TDS_DIO9, AF1,PULL_LOW,SLEEP_DRIVE_LOW)
+
+#define KEY_UAP                 MFP_CFG_PULL(TDS_LNACTRL, AF1,PULL_NONE)
+#define KEY_TD                  MFP_CFG_PULL(TDS_MIXCTRL, AF1,PULL_NONE)
+#define SEC_SYS_CLK_EN          MFP_CFG_PULL_SLEEP(TDS_PACTRL, AF1,PULL_LOW,SLEEP_DRIVE_LOW)
+#define RF_DCDC_EN              MFP_CFG_PULL_SLEEP(TDS_PAON, AF1,PULL_LOW,SLEEP_DRIVE_LOW)
+#define SEC_RESET_B             MFP_CFG_PULL_SLEEP(TDS_RXON, AF1,PULL_HIGH,SLEEP_DRIVE_LOW)
+#define UART2_TXD               MFP_CFG_PULL(TDS_RXREV, AF6,PULL_NONE)
+#define UART2_RXD               MFP_CFG_PULL(TDS_TRXSW, AF6,PULL_NONE)
+#define GPS_CLK_EN              MFP_CFG_PULL_SLEEP(TDS_TXON, AF1,PULL_LOW, SLEEP_DRIVE_LOW)
+#define KEY_WIFI                MFP_CFG_PULL(TDS_TXREV, AF1,PULL_NONE)
+	
+#define DVC0                	MFP_CFG_PULL(SM_SCLK, AF3,PULL_FLOAT)  //GPIO13
+#define DVC1		        MFP_CFG_PULL(SM_BE1, AF0, PULL_FLOAT)   //GPIO127
+#define BOARD_ID0		MFP_CFG_PULL(SM_BE0, AF0,PULL_FLOAT)
+#define BOARD_ID1		MFP_CFG_PULL(SM_ADV, AF1,PULL_FLOAT)
+#define BOARD_ID2		MFP_CFG_PULL(SM_ADVMUX, AF1,PULL_FLOAT)
+#define SM_NCS0		        MFP_CFG(SM_CS0, AF0)
+#define SM_NCS1		        MFP_CFG(SM_CS1, AF0)
+#define ND_NCS1		        MFP_CFG(DF_nCS1_SM_nCS3, AF0)
+#define ND_NCS0		        MFP_CFG(DF_nCS0_SM_nCS2, AF0)
+#define ND_NRE		        MFP_CFG(DF_REn, AF1)
+#define ND_NWE		        MFP_CFG(DF_WEn, AF1)
+#define ND_RDY0	            	MFP_CFG(DF_RDY0, AF0)
+#define ND_ALE			    MFP_CFG(DF_ALE_SM_WEn, AF1)
+#define ND_CLE			    MFP_CFG(DF_CLE_SM_OEn, AF0)
+
+#define ND_IO0				MFP_CFG_PULL(DF_IO0, AF0,PULL_HIGH)
+#define ND_IO1				MFP_CFG_PULL(DF_IO1, AF0,PULL_HIGH)
+#define ND_IO2				MFP_CFG_PULL(DF_IO2, AF0,PULL_HIGH)
+#define ND_IO3				MFP_CFG_PULL(DF_IO3, AF0,PULL_HIGH)
+#define ND_IO4				MFP_CFG_PULL(DF_IO4, AF0,PULL_HIGH)
+#define ND_IO5				MFP_CFG_PULL(DF_IO5, AF0,PULL_HIGH)
+#define ND_IO6				MFP_CFG_PULL(DF_IO6, AF0,PULL_HIGH)
+#define ND_IO7				MFP_CFG_PULL(DF_IO7, AF0,PULL_HIGH)
+#define ND_IO8				MFP_CFG_PULL(DF_IO8, AF0,PULL_HIGH)
+
+#define ND_IO9				MFP_CFG_PULL(DF_IO9,  AF2,PULL_HIGH)
+#define ND_IO10				MFP_CFG_PULL(DF_IO10, AF1, PULL_HIGH)
+#define ND_IO11				MFP_CFG_PULL(DF_IO11, AF2,PULL_HIGH)
+#define ND_IO12				MFP_CFG_PULL(DF_IO12, AF2,PULL_HIGH)
+
+#define ND_IO13				MFP_CFG_PULL(DF_IO13, AF0,PULL_HIGH)
+#define ND_IO14				MFP_CFG_PULL(DF_IO14, AF0,PULL_HIGH)
+#define ND_IO15				MFP_CFG_PULL(DF_IO15, AF0,PULL_HIGH)
+
+#define APT_DCDC_EN_BB			MFP_CFG_PULL_SLEEP(RF_CONT_4,AF6,PULL_LOW,SLEEP_DRIVE_LOW)
+/**************************** end of nezha3 1.0 dkb pinmux 8******************/
+
+
+/**************************** nezha3 2.0Avs1.0 dkb pinmux 8******************/
+#define TP_RESET			MFP_CFG(TDS_DIO9, AF1)
+#define LCD_TE				MFP_CFG(TDS_LNACTRL, AF1)
+#define LCD_PWM				MFP_CFG(TDS_MIXCTRL, AF1)
+#define Z3A_DVC0			MFP_CFG_PULL(TDS_PACTRL, AF2, PULL_FLOAT)
+#define Z3A_DVC1			MFP_CFG_PULL(TDS_PAON, AF2, PULL_FLOAT)
+#define Z3A_GPS_RESET_N			MFP_CFG(TDS_RXON, AF1)
+#define Z3A_GPS_ON_OFF			MFP_CFG(TDS_TXREV, AF1)
+#define BT_WAKE_HOST			MFP_CFG(VCXOREQ, AF1)
+#define TP_INT				MFP_CFG(CLK_REQ, AF1)
+
+#define CHG_PSEL			MFP_CFG(GPIO33, AF0)
+#define Z3A_WLAN_WAKE_HOST		MFP_CFG(GPIO34, AF0)
+#define LCD_RST				MFP_CFG(GPIO86, AF0)
+#define USB_SEL				MFP_CFG(GPIO36, AF0)
+#define CHG_INT				MFP_CFG(GPIO49, AF0)
+#define Z3_CHG_STAT			MFP_CFG(GPIO50, AF0)
+#define CODEC_INT			MFP_CFG(GPIO124, AF0)
+
+#define LCD_RESETN			MFP_CFG(DF_nCS1_SM_nCS3, AF1)
+#define LCD_D13				MFP_CFG(DF_RDY1, AF4)
+#define LCD_WRN				MFP_CFG(SM_SCLK, AF7)
+#define LCD_D11				MFP_CFG(SM_RDY, AF7)
+#define LCD_RDN				MFP_CFG(SM_CS0, AF7)
+#define LCD_CSN				MFP_CFG(SM_CS1, AF4)
+#define LCD_DATA_CMD			MFP_CFG(SM_BE0, AF7)
+#define LCD_D15				MFP_CFG(SM_BE1, AF7)
+#define LCD_D14				MFP_CFG(SM_ADV, AF7)
+#define LCD_D12				MFP_CFG(SM_ADVMUX, AF7)
+#define LCD_D0				MFP_CFG(GPIO37, AF1)
+#define LCD_D1				MFP_CFG(GPIO38, AF1)
+#define LCD_D2				MFP_CFG(GPIO39, AF1)
+#define LCD_D3				MFP_CFG(GPIO40, AF1)
+#define LCD_D4				MFP_CFG(GPIO41, AF1)
+#define LCD_D5				MFP_CFG(GPIO42, AF1)
+#define LCD_D6				MFP_CFG(GPIO43, AF1)
+#define LCD_D7				MFP_CFG(GPIO44, AF1)
+#define LCD_D8				MFP_CFG(GPIO45, AF1)
+#define LCD_D9				MFP_CFG(GPIO46, AF1)
+#define LCD_D10				MFP_CFG(GPIO47, AF1)
+/**************************** end of nezha3 2.0B dkb pinmux 8******************/
+
+/**************************** nezha3 2.0Bvs2.0A dkb pinmux 8******************/
+#define EMMC_RESETN			MFP_CFG(DF_nCS1_SM_nCS3, AF1)
+#define PCIE_CLKREQ_N			MFP_CFG(SM_BE0, AF0)
+#define PCIE_WAKE_N			MFP_CFG(DF_IO14, AF5)
+#define PERST_N				MFP_CFG(DF_IO15, AF3)
+
+#define EMMC50_DAT0			MFP_CFG(GPIO37, AF0)
+#define EMMC50_DAT1			MFP_CFG(GPIO38, AF0)
+#define EMMC50_DAT2			MFP_CFG(GPIO39, AF0)
+#define EMMC50_DAT3			MFP_CFG(GPIO40, AF0)
+#define EMMC50_DAT4			MFP_CFG(GPIO41, AF0)
+#define EMMC50_DAT5			MFP_CFG(GPIO42, AF0)
+#define EMMC50_DAT6			MFP_CFG(GPIO43, AF0)
+#define EMMC50_DAT7			MFP_CFG(GPIO44, AF0)
+#define EMMC50_CMD			MFP_CFG(GPIO45, AF0)
+#define EMMC50_CLK			MFP_CFG(GPIO46, AF0)
+#define EMMC50_STROBE			MFP_CFG(GPIO47, AF0)
+/**************************** end of nezha3 2.0B dkb pinmux 8******************/
+
+void emei_mfp_config(void);
+void emei_mfp_post_config(void);
+#endif /* MFP_MMP3_H */
+

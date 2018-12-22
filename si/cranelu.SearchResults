@@ -1,0 +1,3 @@
+---- DITHER_TB_4X4_INDEX0 Matches (2 in 1 files) ----
+Lcd_drv.c (driver\lcd):#define DITHER_TB_4X4_INDEX0       (0x6e4ca280)
+Lcd_drv.c (driver\lcd):		lcd_write(DITHER_TBL_DATA, DITHER_TB_4X4_INDEX0);

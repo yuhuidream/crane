@@ -1,0 +1,2 @@
+SRCS := *.c
+INCLUDES += $(d)

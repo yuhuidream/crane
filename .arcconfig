@@ -1,0 +1,11 @@
+{
+  "base": "git:merge-base(origin/master), arc:upstream, git:HEAD^",
+  "project_id": "sbqt",
+  "conduit_uri" : "http://10.26.130.134/",
+  "arcanist_configuration": "DisqusConfiguration",
+  "copyright_holder": "Disqus, Inc.",
+  "history.immutable": false,
+  "arc.land.onto.default": "master",
+  "differential.field-selector": "DisqusDifferentialFieldSelector",
+  "load": ["/usr/local/include/php/libdisqus/src"]
+}

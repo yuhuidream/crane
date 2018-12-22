@@ -1,0 +1,7 @@
+---- dest_point Matches (9 in 3 files) ----
+Lcd_drv.c (driver\lcd):	lcd_write(TVG_OVSA_HPXL_VLN, layer->dest_point.x|(layer->dest_point.y<<16));
+Lcd_drv.c (driver\lcd):	lcd_write(GRA_OVSA_HPXL_VLN, layer->dest_point.x|(layer->dest_point.y<<16));
+Lcd_drv.c (driver\lcd):	lcd_write(DMA_OVSA_HPXL_VLN, layer->dest_point.x|(layer->dest_point.y<<16));
+Lcd_drv.h (driver\lcd):	struct s_point dest_point;
+Lcd_test.c (app\common):	layer->dest_point.x = 0;
+Lcd_test.c (app\common):	layer->dest_point.y = 0;
